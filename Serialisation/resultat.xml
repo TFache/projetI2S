@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<etudiant numero_etudiant="1">
+<ns2:etudiant xmlns:ns2="https://www.google.com" numero_etudiant="1">
     <prenom>Thomas</prenom>
     <nom_de_famille>Fache</nom_de_famille>
     <date>1999-11-19T00:00:00+01:00</date>
-    <famille numero_etudiant="0">
+    <famille>
         <prenom>Déborah</prenom>
-        <nom_de_famille>Fache</nom_de_famille>
-        <date>1998-07-14T00:00:00+02:00</date>
+        <année_naissance>1998</année_naissance>
     </famille>
-</etudiant>
+</ns2:etudiant>
