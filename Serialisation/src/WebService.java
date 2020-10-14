@@ -1,6 +1,6 @@
 import javax.jws.WebMethod;
 
-@javax.jws.WebService(targetNamespace = "https://play.pokemonshowdown.com")
+@javax.jws.WebService(targetNamespace = "https://www.google.com")
 public class WebService {
 
 	@WebMethod(operationName = "nomMethode")
