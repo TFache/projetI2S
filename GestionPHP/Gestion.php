@@ -59,5 +59,30 @@ $action = "";//Nous sert pour l'affichage après une action
 			
 	</form>
 	<?php if($action == "consulter") echo "Etudiant : ",print_r((array)$result->return); ?>
+	
+<!-- Modifier un élève -->
+<h1>Modifier un &eacute;tudiant</h1>
+	<form action="Gestion.php" method="post">
+		ID : <input type ="number" name="id_modi" min="0"/><br>
+		Modifier : <input type="radio" id="param" name="param" value="nom">
+				<label for="nom">Nom</label>
+				<input type="radio" id="param" name="param" value="prenom">
+				<label for="prenom">Prenom</label>
+				<input type="radio" id="param" name="param" value="email">
+				<label for="email">Email</label><br>
+		Nouvelle valeur : <input type="text" name="newVal"/><br>
+		<input type="submit" name="action" value="modifier" />
+		
+		<?php 
+		if(isset($_POST['action']) && ($_POST['action']=='modifier')){
+		    $clientSoap = new SoapClient("http://localhost:9594/?wsdl");
+		    $param = array("arg0"=>$_POST["id_modi"], "arg1"=>$_POST["param"], "arg2"=>$_POST["newVal"]);
+		    $clientSoap->modifier($param);
+		    $action="modifier";
+		   
+		}
+		?>
+		</form>
+		<?php if($action == "modifier") echo "Param&egrave;tre modifi&eacute; !"?>
 </body>
 </html>
