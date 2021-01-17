@@ -10,7 +10,7 @@ public class Team implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private int id;
 	private String link;
-	private String login;
+	private String pseudo;
 
 	public Team() {
 		super();
@@ -53,15 +53,15 @@ public class Team implements Serializable{
 	/**
 	 * @return the login
 	 */
-	public String getLogin() {
-		return login;
+	public String getPseudo() {
+		return pseudo;
 	}
 
 	/**
 	 * @param login the login to set
 	 */
-	public void setLogin(String login) {
-		this.login = login;
+	public void setPseudo(String pseudo) {
+		this.pseudo = pseudo;
 	}
 
 	

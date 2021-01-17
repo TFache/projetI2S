@@ -15,7 +15,7 @@
 <h1>Accueil</h1>
 
 
-<form method="post" action="index">
+<form method="post" action="login">
 <!-- Le but : Pouvoir entrer son login et password et pouvoir voir son nom sur la vue resultat -->
   <div class="form-group">
     <label for="login">Identifiant</label>
@@ -31,9 +31,6 @@
 
 </form>
 
-<c:if test="${authentification.isConnexion()}">
-<c:out value="Connexion réussie !"></c:out>
-</c:if>
 <a href="/inscription.jsp">Inscrivez-vous ici !</a>
 </body>
 </html>

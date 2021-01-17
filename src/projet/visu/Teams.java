@@ -37,7 +37,7 @@ public class Teams {
 				}
 				
 				try {
-					connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdd_13_11?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
+					connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projet_teams?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					System.out.println("Connection failed.");
@@ -101,10 +101,10 @@ public class Teams {
 	
 	public void ajoutTeam(Team t) {
 		try {
-			PreparedStatement preparedStatement = this.connection.prepareStatement("INSERT INTO `teams`(`id`, `link`, `login`) VALUES (?,?,?);");
+			PreparedStatement preparedStatement = this.connection.prepareStatement("INSERT INTO `teams`(`id`, `link`, `pseudo`) VALUES (?,?,?);");
 			preparedStatement.setInt(1, t.getId());//Remplace le 1er "?" de la requête
 			preparedStatement.setString(2, t.getLink());//Remplace le 2er "?" de la requête
-			preparedStatement.setString(3, t.getLogin());//Remplace le 3er "?" de la requête
+			preparedStatement.setString(3, t.getPseudo());//Remplace le 3er "?" de la requête
 			preparedStatement.executeUpdate(); //Mise à jour du tableau
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block

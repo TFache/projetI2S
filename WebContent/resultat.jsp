@@ -18,14 +18,15 @@
 </head>
 <body>
 	<%@ include file="nav.jsp" %>
-	<h1>Bienvenue <c:if test="${authentification.isConnexion()}"><c:out value="${login }"></c:out></c:if>!</h1>
+	<h1>Bienvenue <c:if test="${authentification.isConnexion()}"><c:out value="${login }"></c:out></c:if> !</h1>
 	<h5>Ici, tu vas pouvoir stocker tes teams SD tranquillement sans risques de les voir disparaître à cause d'un malencontreux nettoyage des cookies du navigateur !</h5>
 
 
-<form action="resultat" method="post">
-<label id="team">Déposez votre team ici</label>
+<form action="login" method="post">
+<label id="team">Déposez votre team ici : </label>
 <input type="text" id="team" name="team">
-<label id="id">Entrez le numéro de la team à supprimer ici</label>
+<br/>
+<label id="id">Entrez le numéro de la team à supprimer ici : </label>
 <input type="text" id="id" name="id">
 <br/>
 <input type="submit" name="action" value="Ajouter" class="btn btn-primary">
@@ -42,6 +43,16 @@
       <th scope="col">Lien de la team</th>
     </tr>
 	</thead>
+	<tbody id="res">
+<c:forEach items="${resultat}" var="teams">
+<tr>
+	<th scope="row"><c:out value="${teams.id}"></c:out></th>
+	<th><c:out value="${teams.pseudo}"></c:out></th>
+	<th><c:out value="${teams.link}"></c:out></th>
+</tr>
+</c:forEach>
+
+	</tbody>
 </table>
 </body>
 </html>
