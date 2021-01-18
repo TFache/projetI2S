@@ -22,7 +22,7 @@
 	<h5>Ici, tu vas pouvoir stocker tes teams SD tranquillement sans risques de les voir disparaître à cause d'un malencontreux nettoyage des cookies du navigateur !</h5>
 
 
-<form action="login" method="post">
+<form action="" method="post">
 <label id="team">Déposez votre team ici : </label>
 <input type="text" id="team" name="team">
 <br/>
@@ -48,7 +48,7 @@
 <tr>
 	<th scope="row"><c:out value="${teams.id}"></c:out></th>
 	<th><c:out value="${teams.pseudo}"></c:out></th>
-	<th><c:out value="${teams.link}"></c:out></th>
+	<th><a href = "<c:out value="${teams.link}"></c:out>"><c:out value="${teams.link}"></c:out></a></th>
 </tr>
 </c:forEach>
 

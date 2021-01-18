@@ -48,15 +48,17 @@ public class Authentification implements Serializable {
 			statement = connection.createStatement();
 
 			//exécuter une requête et récup son contenu dans resultSet
-			resultSet = statement.executeQuery("SELECT * FROM login WHERE login =" + login);
+			resultSet = statement.executeQuery("SELECT * FROM login WHERE login = \"" + login + "\"");
 			
-
-			if(password.equals(resultSet.getString("password")) && login.equals(resultSet.getString("login"))) {
-				this.connexion = true;
+			while(resultSet.next()) {
+				if(password.equals(resultSet.getString("password")) && login.equals(resultSet.getString("login"))) {
+					this.connexion = true;
+				}
+				else {
+					this.connexion = false;
+				}
 			}
-			else {
-				this.connexion = false;
-			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
