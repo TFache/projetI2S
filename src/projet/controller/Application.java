@@ -15,8 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/Application")
 public class Application extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-   
-    public Application() {
+
+
+
+
+	public Application() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,7 +29,6 @@ public class Application extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		if(authentification.isConnexion())  response.sendRedirect("index");
-			//this.getServletContext().getRequestDispatcher("/WEB-INF/resultat.jsp").forward(request, response);
 
 		else this.getServletContext().getRequestDispatcher("/WEB-INF/Connexion/view.jsp").forward(request, response);
 		

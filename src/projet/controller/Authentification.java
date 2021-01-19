@@ -1,6 +1,9 @@
 package projet.controller;
 
 import java.io.Serializable;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -8,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import projet.visu.*;
+
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -36,6 +40,25 @@ public class Authentification implements Serializable {
 		this.connexion = connexion;
 	}
 	
+	public String hashCode(String password) {
+		MessageDigest md; StringBuilder sb = null;
+		try {
+			md = MessageDigest.getInstance("SHA-256");
+			byte[]hashInBytes = md.digest(password.getBytes(StandardCharsets.UTF_8));
+
+		       //bytes to hex
+		        sb = new StringBuilder();
+		        for (byte b : hashInBytes) {
+		            sb.append(String.format("%02x", b));
+		        }
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return sb.toString();
+        
+	}
+	
 	public void acces(HttpServletRequest request) {
 		String login = request.getParameter("login");
 		String password = request.getParameter("password");
@@ -51,7 +74,7 @@ public class Authentification implements Serializable {
 			resultSet = statement.executeQuery("SELECT * FROM login WHERE login = \"" + login + "\"");
 			
 			while(resultSet.next()) {
-				if(password.equals(resultSet.getString("password")) && login.equals(resultSet.getString("login"))) {
+				if(hashCode(password).equals(resultSet.getString("password")) && login.equals(resultSet.getString("login").toString())) {
 					this.connexion = true;
 				}
 				else {

@@ -16,7 +16,7 @@ import projet.visu.Teams;
 @WebServlet("/Index")
 public class IndexSV extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    private Application a;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -40,12 +40,18 @@ public class IndexSV extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(request.getParameter("action").equals("Ajouter")) {
 			Team t = new Team();
-			t.setId(Integer.parseInt(request.getParameter("id")));
 			t.setLink(request.getParameter("link"));
-			t.setPseudo(request.getParameter("login")); //Pseudo et login ont le même objectif
+			t.setPseudo("oui"); //Pseudo et login ont le même objectif
 			
 			Teams ts = new Teams();
 			ts.ajoutTeam(t);
+		}
+		if(request.getParameter("action").equals("Supprimer")) {
+			
+			int id = Integer.parseInt(request.getParameter("id"));
+			
+			Teams ts = new Teams();
+			ts.suppTeam(id);
 		}
 		doGet(request, response);
 	}

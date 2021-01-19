@@ -19,12 +19,12 @@
 <body>
 	<%@ include file="nav.jsp" %>
 	<h1>Bienvenue <c:if test="${authentification.isConnexion()}"><c:out value="${login }"></c:out></c:if> !</h1>
-	<h5>Ici, tu vas pouvoir stocker tes teams SD tranquillement sans risques de les voir disparaître à cause d'un malencontreux nettoyage des cookies du navigateur !</h5>
+	<h5>Ici, tu vas pouvoir stocker tes teams Showdown tranquillement sans risques de les voir disparaître à cause d'un malencontreux nettoyage des cookies du navigateur !</h5>
 
 
 <form action="" method="post">
 <label id="team">Déposez votre team ici : </label>
-<input type="text" id="team" name="team">
+<input type="text" id="link" name="link">
 <br/>
 <label id="id">Entrez le numéro de la team à supprimer ici : </label>
 <input type="text" id="id" name="id">

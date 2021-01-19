@@ -100,15 +100,16 @@ public class Teams {
 	}
 	
 	public void ajoutTeam(Team t) {
+		this.connexion();
 		try {
 			PreparedStatement preparedStatement = this.connection.prepareStatement("INSERT INTO `teams`(`id`, `link`, `pseudo`) VALUES (?,?,?);");
-			preparedStatement.setInt(1, t.getId());//Remplace le 1er "?" de la requête
+			preparedStatement.setInt(1, t.getId());//Remplace le 1er "?" de la requêtes
 			preparedStatement.setString(2, t.getLink());//Remplace le 2er "?" de la requête
 			preparedStatement.setString(3, t.getPseudo());//Remplace le 3er "?" de la requête
 			preparedStatement.executeUpdate(); //Mise à jour du tableau
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
-			System.out.println("Ajout : " + e1.getMessage());
+			e1.printStackTrace();
 		} 
 	}
 }
