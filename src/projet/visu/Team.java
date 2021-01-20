@@ -16,10 +16,11 @@ public class Team implements Serializable{
 		super();
 	}
 
-	public Team(int id, String link, String login) {
+	public Team(int id, String link, String pseudo) {
 		super();
 		this.id = id;
 		this.link = link;
+		this.pseudo = pseudo;
 	}
 
 	/**
