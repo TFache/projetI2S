@@ -32,4 +32,12 @@
 		<url-pattern>/index</url-pattern>
 	</servlet-mapping>
 
+<servlet>
+		<servlet-name>inscription</servlet-name>
+		<servlet-class>projet.controller.InscriptionSV</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>inscription</servlet-name>
+		<url-pattern>/signup</url-pattern>
+	</servlet-mapping>
 </web-app>

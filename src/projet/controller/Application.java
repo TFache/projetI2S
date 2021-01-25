@@ -48,7 +48,7 @@ public class Application extends HttpServlet {
 		request.setAttribute("password", password);
 
 		authentification.acces(request); 
-		request.setAttribute("authentification", authentification);
+
 
 		
 		

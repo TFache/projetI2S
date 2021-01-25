@@ -30,7 +30,7 @@
   <button type="submit" class="btn btn-default">Envoyer</button>
 
 </form>
-
-<a href="/inscription.jsp">Inscrivez-vous ici !</a>
+<c:if test="${authentification.isInscription()}"><c:out value="Inscription effectuée avec succès !"></c:out></c:if>
+<a href="signup">Inscrivez-vous ici !</a>
 </body>
 </html>

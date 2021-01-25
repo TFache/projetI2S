@@ -6,6 +6,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -19,7 +20,8 @@ public class Authentification implements Serializable {
 
 
 	private static final long serialVersionUID = 1L;
-	private boolean connexion;
+	private boolean connexion = false;
+	private boolean inscription = false;
 	Teams t = new Teams();
 	Connection connection = t.getConnection();
 
@@ -40,6 +42,20 @@ public class Authentification implements Serializable {
 		this.connexion = connexion;
 	}
 	
+	/**
+	 * @return the inscription
+	 */
+	public boolean isInscription() {
+		return inscription;
+	}
+
+	/**
+	 * @param inscription the inscription to set
+	 */
+	public void setInscription(boolean inscription) {
+		this.inscription = inscription;
+	}
+
 	public String hashCode(String password) {
 		MessageDigest md; StringBuilder sb = null;
 		try {
@@ -57,6 +73,37 @@ public class Authentification implements Serializable {
 		}
 		return sb.toString();
         
+	}
+	
+	public void inscription(HttpServletRequest request) {
+		String login_insc = request.getParameter("login_insc");
+		String password_insc = request.getParameter("password_insc");
+		
+		t.connexion();
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projet_teams?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
+			/*statement = connection.createStatement();
+
+			//exécuter une requête et récup son contenu dans resultSet
+			resultSet = statement.executeQuery("SELECT * FROM login WHERE login = \"" + login_insc + "\"");
+			
+			while(resultSet.next())
+			if(resultSet.getString("login").isEmpty()) {*/
+				PreparedStatement prep = this.connection.prepareStatement("INSERT INTO `login`(`login`, `password`) VALUES (?,?);");
+				prep.setString(1, login_insc);
+				prep.setString(2, hashCode(password_insc));
+				prep.executeUpdate();
+				
+				this.inscription = true;
+			//}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void acces(HttpServletRequest request) {

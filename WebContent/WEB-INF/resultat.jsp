@@ -18,7 +18,7 @@
 </head>
 <body>
 	<%@ include file="nav.jsp" %>
-	<h1>Bienvenue <c:if test="${authentification.isConnexion()}"><c:out value="${login }"></c:out></c:if> !</h1>
+	<h1>Bienvenue <c:out value="${login }"></c:out> !</h1>
 	<h5>Ici, tu vas pouvoir stocker tes teams Showdown tranquillement sans risques de les voir disparaître à cause d'un malencontreux nettoyage des cookies du navigateur !</h5>
 	
 
