@@ -44,6 +44,7 @@ public class InscriptionSV extends HttpServlet {
 		
 		
 		authentification.inscription(request);
+		request.setAttribute("authentification", authentification);
 		
 		
 		doGet(request, response);

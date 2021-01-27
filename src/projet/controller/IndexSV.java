@@ -43,6 +43,9 @@ public class IndexSV extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		
 		if(request.getParameter("action").equals("Ajouter")) {
 			Team t = new Team();
 			
