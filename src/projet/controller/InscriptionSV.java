@@ -27,6 +27,7 @@ public class InscriptionSV extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//si inscription réussie, redirection, sinon rien ne se passe
 		if(authentification.isInscription()) response.sendRedirect("login");
 		else this.getServletContext().getRequestDispatcher("/WEB-INF/Inscription/inscription.jsp").forward(request, response);
 	}

@@ -27,7 +27,7 @@ public class Application extends HttpServlet {
     protected Authentification authentification = new Authentification();
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		//si inscription réussie : redirection vers l'accueil, sinon rien ne se passe
 		if(authentification.isConnexion())  response.sendRedirect("index");
 
 		else this.getServletContext().getRequestDispatcher("/WEB-INF/Connexion/view.jsp").forward(request, response);
@@ -40,7 +40,7 @@ public class Application extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
+		//Récupération de l'identifiant et du mot de passe
 		String login = request.getParameter("login");
 		request.setAttribute("login", login);
 

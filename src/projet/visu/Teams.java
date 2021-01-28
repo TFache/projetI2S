@@ -27,6 +27,9 @@ public class Teams {
 		this.connection = connection;
 	}
 	
+	/**
+	 * Permet d'accéder à la base de données
+	 */
 	public void connexion() {
 		//driver MySQL va être chargé
 				try {
@@ -44,6 +47,10 @@ public class Teams {
 				}
 	}
 	
+	/**
+	 * Permet d'afficher toutes les équipes
+	 * @return resultat : toutes les équipes présentes dans la base de données
+	 */
 	public List<Team> affichage() {
 		
 		List<Team> resultat = new ArrayList<Team>();
@@ -84,6 +91,10 @@ public class Teams {
 
 	}
 	
+	/**
+	 * Permet de supprimer une équipe de la base de données
+	 * @param id : l'indentifiant de l'équipe
+	 */
 	public void suppTeam(int id) {
 		
 		this.connexion();
@@ -99,6 +110,10 @@ public class Teams {
 		}
 	}
 	
+	/**
+	 * Permet d'ajouter une équipe à la base de données
+	 * @param t : l'équipe à ajouter avec tous ses paramètres
+	 */
 	public void ajoutTeam(Team t) {
 		this.connexion();
 		try {

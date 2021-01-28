@@ -49,6 +49,7 @@ public class IndexSV extends HttpServlet {
 		if(request.getParameter("action").equals("Ajouter")) {
 			Team t = new Team();
 			
+			//Le passage suivant permet d'obtenir le contenu de la balise <title>
 			URL u = new URL(request.getParameter("link"));
 			InputStream in = u.openStream();
 			Scanner scanner = new Scanner(in);
@@ -57,7 +58,7 @@ public class IndexSV extends HttpServlet {
 			
 			//l'id s'auto-incrémente
 			t.setLink(request.getParameter("link"));
-			t.setPseudo(title); //Pseudo et login ont le même objectif
+			t.setPseudo(title); //Pseudo correspond au titre de l'onglet
 			
 			Teams ts = new Teams();
 			ts.ajoutTeam(t);

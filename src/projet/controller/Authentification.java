@@ -56,6 +56,11 @@ public class Authentification implements Serializable {
 		this.inscription = inscription;
 	}
 
+	/**
+	 * Permet de crypter le mot de passe
+	 * @param password : le mot de passe saisi par l'utilisateur
+	 * @return le mot de passe crypté via SHA-256
+	 */
 	public String hashCode(String password) {
 		MessageDigest md; StringBuilder sb = null;
 		try {
@@ -75,6 +80,10 @@ public class Authentification implements Serializable {
         
 	}
 	
+	/**
+	 * Permet de s'inscrire sur le site via une requête SQL. Pose également le booléen inscription à true.
+	 * @param request : la requête HTTP du servlet
+	 */
 	public void inscription(HttpServletRequest request) {
 		String login_insc = request.getParameter("login_insc");
 		String password_insc = request.getParameter("password_insc");
@@ -106,6 +115,11 @@ public class Authentification implements Serializable {
 		}
 	}
 	
+	
+	/**
+	 * Permet de comparer les identifiants et mots de passes cryptés avec ceux présents sur la base de données. Définit le booléen connexion en fonction.
+	 * @param request : la requête HTTP du servlet
+	 */
 	public void acces(HttpServletRequest request) {
 		String login = request.getParameter("login");
 		String password = request.getParameter("password");

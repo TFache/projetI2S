@@ -10,7 +10,7 @@ public class Team implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private int id;
 	private String link;
-	private String pseudo;
+	private String pseudo; //Correspond en réalité au titre de l'équipe en question
 
 	public Team() {
 		super();
